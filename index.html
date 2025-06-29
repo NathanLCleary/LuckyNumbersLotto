@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body>
+    <div class="infobox">
+        <div class="infoboxContent">
+            <div id="totalWinnings">Total winnings: <span id="winnings"></span></div>
+            <div id="jpspan">Jackpot: <span id="jackpot"></span></div>
+        </div>
+        <div>
+            Ticket price: 2,500,000
+        </div>
+        <div class="matches">
+            Matches: <span id="match"></span>
+        </div>
+        <div class="rules">
+            <table>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        winnings = % of jackpot
+                    </td>
+                </tr>
+                <tr>
+                    <td>1 match = 10%</td>
+                    <td>4 matches = 70%</td>
+                </tr>
+                <tr>
+                    <td>2 matches = 30%</td>
+                    <td>5 matches = 90%</td>
+                </tr>
+                <tr>
+                    <td>3 matches = 50%</td>
+                    <td>6 matches = 100%</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="result" class="result" style="padding-top: 10px;">
+        <!--<div><img src="images/download.jpg" class="logo"></div>-->
+        Please enter the draw to see the winning numbers
+    </div>
+    <div class="result">
+        <input type="text" id="pBall1" class="ball"></input>
+        <input type="text" id="pBall2" class="ball"></input>
+        <input type="text" id="pBall3" class="ball"></input>
+        <input type="text" id="pBall4" class="ball"></input>
+        <input type="text" id="pBall5" class="ball"></input>
+        <input type="text" id="pBall6" class="ball"></input>
+    </div>
+    <button class="Enter" onclick="startGame()">Enter Draw</button>
+</body>
+
+</html>
