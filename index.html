@@ -1,59 +1,138 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎰 Lucky Numbers Lotto</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
-    <div class="infobox">
-        <div class="infoboxContent">
-            <div id="totalWinnings">Total winnings: <span id="winnings"></span></div>
-            <div id="jpspan">Jackpot: <span id="jackpot"></span></div>
-        </div>
-        <div>
-            Ticket price: 2,500,000
-        </div>
-        <div class="matches">
-            Matches: <span id="match"></span>
-        </div>
-        <div class="rules">
-            <table>
-                <tr>
-                    <td colspan="2" style="text-align: center;">
-                        winnings = % of jackpot
-                    </td>
-                </tr>
-                <tr>
-                    <td>1 match = 10%</td>
-                    <td>4 matches = 70%</td>
-                </tr>
-                <tr>
-                    <td>2 matches = 30%</td>
-                    <td>5 matches = 90%</td>
-                </tr>
-                <tr>
-                    <td>3 matches = 50%</td>
-                    <td>6 matches = 100%</td>
-                </tr>
-            </table>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">🎰 Lucky Numbers Lotto</h1>
+            <p class="subtitle">Your chance to win big!</p>
+        </header>
+
+        <div class="main-layout">
+            <div class="left-sidebar">
+                <div class="rules-card">
+                    <h3>🏆 Prize Structure</h3>
+                    <div class="rules-list">
+                        <div class="rule-item"><span class="matches-num">2</span> matches = <span class="percentage">$5</span></div>
+                        <div class="rule-item"><span class="matches-num">3</span> matches = <span class="percentage">$25</span></div>
+                        <div class="rule-item"><span class="matches-num">4</span> matches = <span class="percentage">$100</span></div>
+                        <div class="rule-item"><span class="matches-num">5</span> matches = <span class="percentage">$1,000</span></div>
+                        <div class="rule-item"><span class="matches-num">6</span> matches = <span class="percentage">JACKPOT!</span></div>
+                        <div class="rule-item bonus"><span class="matches-num">6+B</span> matches = <span class="percentage">JACKPOT x2!</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-area">
+                <div class="game-info">
+                    <div class="info-card">
+                        <div class="info-row">
+                            <div class="info-item">
+                                <span class="label">Balance:</span>
+                                <span id="balance" class="value">$100</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Current Jackpot:</span>
+                                <span id="jackpot" class="value jackpot">$10,000</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Last Win:</span>
+                                <span id="lastWin" class="value">$0</span>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-item">
+                                <span class="label">Ticket Price:</span>
+                                <span class="value">$5</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Matches:</span>
+                                <span id="match" class="value matches">0</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Win Streak:</span>
+                                <span id="streak" class="value">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-section">
+                    <div id="result" class="result-display">
+                        <h3>🎲 Winning Numbers</h3>
+                        <p class="instruction">Click "Play" to see the winning numbers!</p>
+                    </div>
+
+                    <div class="player-section">
+                        <h3>🎯 Your Numbers</h3>
+                        <p class="instruction">Choose 6 numbers between 1-35:</p>
+                        <div class="player-balls">
+                            <input type="number" id="pBall1" class="ball-input" min="1" max="35" placeholder="?">
+                            <input type="number" id="pBall2" class="ball-input" min="1" max="35" placeholder="?">
+                            <input type="number" id="pBall3" class="ball-input" min="1" max="35" placeholder="?">
+                            <input type="number" id="pBall4" class="ball-input" min="1" max="35" placeholder="?">
+                            <input type="number" id="pBall5" class="ball-input" min="1" max="35" placeholder="?">
+                            <input type="number" id="pBall6" class="ball-input" min="1" max="35" placeholder="?">
+                        </div>
+                        <div class="game-options">
+                            <button class="quick-pick-btn" onclick="quickPick()">🎲 Quick Pick</button>
+                            <div class="power-play">
+                                <label class="power-play-label">
+                                    <input type="checkbox" id="powerPlay"> 
+                                    ⚡ Power Play (+$2) - 2x multiplier
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="enter-btn" onclick="startGame()" id="playBtn">
+                            <span class="btn-icon">🎲</span>
+                            Play ($5)
+                        </button>
+                        <button class="reset-btn" onclick="resetGame()">
+                            <span class="btn-icon">🔄</span>
+                            Reset Game
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-sidebar">
+                <div class="stats-card">
+                    <h3>📊 Your Statistics</h3>
+                    <p class="stats-subtitle">Total (Current Session)</p>
+                    <div class="stats-list">
+                        <div class="stat-item">
+                            <span class="stat-label">Games Played</span>
+                            <span class="stat-value" id="gamesPlayed">0 (0)</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Wins</span>
+                            <span class="stat-value" id="totalWins">0 (0)</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Biggest Win</span>
+                            <span class="stat-value" id="biggestWin">$0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Win Rate</span>
+                            <span class="stat-value" id="winRate">0% (0%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="result" class="result" style="padding-top: 10px;">
-        <!--<div><img src="images/download.jpg" class="logo"></div>-->
-        Please enter the draw to see the winning numbers
-    </div>
-    <div class="result">
-        <input type="text" id="pBall1" class="ball"></input>
-        <input type="text" id="pBall2" class="ball"></input>
-        <input type="text" id="pBall3" class="ball"></input>
-        <input type="text" id="pBall4" class="ball"></input>
-        <input type="text" id="pBall5" class="ball"></input>
-        <input type="text" id="pBall6" class="ball"></input>
-    </div>
-    <button class="Enter" onclick="startGame()">Enter Draw</button>
 </body>
 
 </html>
