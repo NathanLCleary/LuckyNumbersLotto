@@ -15,7 +15,7 @@
 | **Year** | 2025 |
 | **Featured** | true |
 | **HasDownload** | true |
-| **DownloadUrl** | webpage |
+| **PreviewUrl** | https://nathanlcleary.github.io/LuckyNumbersLotto |
 
 ---
 
